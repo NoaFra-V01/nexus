@@ -1,35 +1,35 @@
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Bienvenue sur NEXUS{% endblock %}
+{% block title %}Tableau de bord{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .ticket-card { border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 5px; background: #fff; }
-    .status-open { color: green; font-weight: bold; }
-    .status-done { color: gray; text-decoration: line-through; }
-</style>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>🔧 Tickets en cours</h1>
+        <span class="badge bg-secondary">{{ tickets|length }} tickets</span>
+    </div>
 
-<div class="example-wrapper">
-    <h1>Tableau de bord NEXUS</h1>
-
-    <h2>Derniers tickets</h2>
-
-    {% for ticket in tickets%}
-        <div class="ticket-card">
-            <h3>#{{ ticket.id }} - {{ ticket.title}}</h3>
-
-            <p>
-                <strong>Status :</strong>
-                <span class="{{ ticket.status == 'OPEN' ? 'status-open' : 'status-done'}}"> {{ ticket.status }}</span>
-
-                <small>Crée le {{ ticket.createdAt|date('d/m/Y à H:i') }}</small>
-            </p>
-
-            <p>{{ ticket.description }}</p>
-        </div>
-      {%else%}
-      <p>Aucun ticket dans la base</p> 
-      {%endfor%} 
-</div>
+    <div class="row">
+        {% for ticket in tickets %}
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm h-100 border-start border-4 {{ ticket.status == 'OPEN' ? 'border-success' : 'border-secondary' }}">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-2">
+                            <h5 class="card-title">{{ ticket.title }}</h5>
+                            <span class="badge {{ ticket.status == 'OPEN' ? 'bg-success' : 'bg-secondary' }}">
+                                {{ ticket.status }}
+                            </span>
+                        </div>
+                        <h6 class="card-subtitle mb-2 text-muted">Créé le {{ ticket.createdAt|date('d/m/Y H:i') }}</h6>
+                        <p class="card-text">{{ ticket.description }}</p>
+                        
+                        {# Bouton Modifier (On va créer la route juste après) #}
+                        <a href="{{ path('app_ticket_edit', {id: ticket.id}) }}" class="btn btn-sm btn-outline-primary">Modifier</a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="alert alert-info">Aucun ticket pour le moment. Bon travail !</div>
+        {% endfor %}
+    </div>
 {% endblock %}

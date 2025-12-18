@@ -2,14 +2,32 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\User;
 use App\Entity\Ticket;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
+
+    public function __construct(private UserPasswordHasherInterface $hasher)
+    {
+    }
+
     public function load(ObjectManager $manager): void
     {
+        $admin = new User();
+        $admin->setEmail('admin@nexus.com');
+
+        $password = $this->hasher->hashPassword($admin, 'password');
+        $admin->setPassword($password);
+
+        $admin->setRoles(['ROLE_ADMIN']);
+
+        $manager->persist($admin);
+
+
         for ($i = 1; $i <= 10; $i++) {
             $ticket = new Ticket();
             $ticket->setTitle("Ticket n°$i");
