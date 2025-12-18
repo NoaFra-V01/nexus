@@ -1,68 +1,48 @@
-<div align="center">
+# 🚀 Nexus - Système de Gestion de Tickets
 
-  # 🌟 [Nom de Votre Projet]
+Nexus est une application web de **gestion de support client (Ticketing)** développée avec le framework **Symfony 7**.
+Ce projet a été réalisé dans le cadre d'un apprentissage approfondi de l'architecture MVC, de la sécurité et des services Symfony.
 
-  ### [Une phrase d'accroche courte et percutante qui résume le projet.]
+## ✨ Fonctionnalités
 
-  ![Status](https://img.shields.io/badge/Status-En_Développement-yellow?style=flat-square)
-  ![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
-  ![Language](https://img.shields.io/badge/Language-Python_|-JS_|-HTML-orange?style=flat-square)
+### 👤 Partie Utilisateur
+* **Authentification complète :** Système de Connexion / Déconnexion sécurisé.
+* **Tableau de bord :** Visualisation de la liste des tickets avec indicateurs visuels d'état (Ouvert/Terminé).
+* **Création de tickets :** Formulaire sécurisé accessible uniquement aux utilisateurs connectés.
+* **Modification :** Édition des tickets existants.
+* **Feedback :** Notifications flash (messages de succès) après chaque action importante.
 
-  <br />
-
-  <p align="center">
-    <a href="#-à-propos">À propos</a> •
-    <a href="#-fonctionnalités-clés">Fonctionnalités</a> •
-    <a href="#-technologies-utilisées">Tech Stack</a> •
-    <a href="#-installation-et-démarrage">Installation</a>
-  </p>
-
-</div>
+### ⚙️ Backend & Logique
+* **Service Mailer Automatisé :** Envoi automatique d'un email à l'administrateur dès la création d'un nouveau ticket.
+* **Sécurité (Vigile) :** Protection des routes sensibles via `Access Control` et attributs `#[IsGranted]`.
+* **Données de test (Fixtures) :** Génération automatique d'un jeu de données (Utilisateurs et Tickets) pour le développement.
+* **Design Responsive :** Interface moderne utilisant **Bootstrap 5**.
 
 ---
 
-## 📕 À propos
+## 🛠️ Stack Technique
 
-> 💡 [Expliquez ici en 2-3 phrases le "pourquoi" de votre projet. Quel problème résout-il ? Pourquoi l'avez-vous créé ?]
+* **Langage :** PHP 8.2+
+* **Framework :** Symfony 7
+* **Base de données :** MySQL (via Doctrine ORM)
+* **Moteur de template :** Twig
+* **Frontend :** Bootstrap 5 (CDN)
+* **Outils :** Symfony CLI, Composer, Maker Bundle
 
-[C'est un paragraphe plus détaillé. Décrivez ici ce que fait l'application. Si c'est votre premier projet, dites-le ! C'est l'endroit idéal pour présenter le contexte.]
-
-Exemple : *"Ce projet a été conçu pour m'entraîner sur React et comprendre comment gérer des appels API complexes. Il permet aux utilisateurs de rechercher des recettes de cuisine en fonction des ingrédients qu'ils ont dans leur frigo."*
-
-<br />
-
-## ✨ Fonctionnalités clés
-
-Voici ce que ce projet permet de faire :
-
-* ✅ [Fonctionnalité 1 : ex: Recherche instantanée d'utilisateurs]
-* ✅ [Fonctionnalité 2 : ex: Mode sombre automatique]
-* ✅ [Fonctionnalité 3 : ex: Export des données en PDF]
-* 🚧 [Fonctionnalité à venir : ex: Système de connexion]
-
-<br />
-
-## 🛠 Technologies utilisées
-
-Liste des outils et langages principaux utilisés pour construire ce projet :
-
-| Catégorie | Outils |
-| --- | --- |
-| **Front-end** | ![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) |
-| **Back-end** | [ex: Node.js, Python, PHP...] |
-| **Base de données** | [ex: MongoDB, MySQL, PostgreSQL...] |
-| **Outils** | ![Git](https://img.shields.io/badge/-Git-F05032?style=flat-square&logo=git&logoColor=white) ![VS Code](https://img.shields.io/badge/-VS_Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white) |
-
-<br />
+---
 
 ## 🚀 Installation et Démarrage
 
-Pour faire tourner ce projet localement sur votre machine, suivez ces étapes :
+Suivez ces étapes pour lancer le projet en local :
 
-**Prérequis :**
-Assurez-vous d'avoir [ex: Node.js / Python Version X.X] installé.
+### 1. Prérequis
+Assurez-vous d'avoir installé :
+* PHP 8.2 ou supérieur
+* Composer
+* Symfony CLI
+* Un serveur MySQL (WAMP, XAMPP, ou Docker)
 
-**1. Cloner le dépôt**
+### 2. Cloner le projet
 ```bash
-git clone [https://github.com/](https://github.com/)[votre-nom-utilisateur]/[nom-du-repo].git
-cd [nom-du-repo]
+git clone [https://github.com/VOTRE_PSEUDO/nexus.git](https://github.com/VOTRE_PSEUDO/nexus.git)
+cd nexus
